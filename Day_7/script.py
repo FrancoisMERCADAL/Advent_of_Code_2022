@@ -89,9 +89,9 @@ def no_space_left_on_device_part2():
 
 ### TEST AREA
 # Part 1
-print(no_space_left_on_device_part1())
+#print(no_space_left_on_device_part1())
 # Output: 1182909
 
 # Part 2
-print(no_space_left_on_device_part2())
+#print(no_space_left_on_device_part2())
 # Output: 2832508
