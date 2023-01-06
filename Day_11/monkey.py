@@ -36,6 +36,3 @@ class Monkey:
         if item % self.divide_test == 0:
             return True
         return False
-    
-    def toString(self):
-        return "Items: " + str(self.items).strip('[]') + "\noperation: " + str(self.operation).strip('[]') + "\ndivide test: " + str(self.divide_test) + "\ntest true case: " + str(self.divide_test_true_case) + "\ntest false case: " + str(self.divide_test_false_case) + "\ninspected objects: " + str(self.inspected_items)
