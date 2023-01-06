@@ -1,5 +1,5 @@
 # Advent_of_Code_2022
-## Stars collected : 20
+## Stars collected : 21
 * Day 1: https://adventofcode.com/2022/day/1 (2*)
 
 * Day 2: https://adventofcode.com/2022/day/2 (2*)
@@ -20,4 +20,4 @@
 
 * Day 10: https://adventofcode.com/2022/day/10 (2*)
 
-* Day 11: https://adventofcode.com/2022/day/11 (1*)
+* Day 11: https://adventofcode.com/2022/day/11 (2*)

@@ -19,16 +19,17 @@ class Monkey:
                 self.items[i] = int((self.items[i] + self.operation[1])/3)
         self.inspected_items += len(self.items)
 
-    def inspect_items_part2(self):
+    def inspect_items_part2(self, supermodulo):
         for i in range(len(self.items)):
             if self.operation[0] == "*" and self.operation[1] == "itself":
-                self.items[i] = self.items[i] * self.items[i]
+                self.items[i] = (self.items[i] * self.items[i])
             elif self.operation[0] == "*":
                 self.items[i] = self.items[i] * self.operation[1]
             elif self.operation[0] == "+" and self.operation[1] == "itself":
                 self.items[i] = self.items[i] + self.items[i]
             elif self.operation[0] == "+":
                 self.items[i] = self.items[i] + self.operation[1]
+            self.items[i] = self.items[i] % supermodulo
         self.inspected_items += len(self.items)
 
     def perform_division_test(self, item):
@@ -38,5 +39,3 @@ class Monkey:
     
     def toString(self):
         return "Items: " + str(self.items).strip('[]') + "\noperation: " + str(self.operation).strip('[]') + "\ndivide test: " + str(self.divide_test) + "\ntest true case: " + str(self.divide_test_true_case) + "\ntest false case: " + str(self.divide_test_false_case) + "\ninspected objects: " + str(self.inspected_items)
-
-    

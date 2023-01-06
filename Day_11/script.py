@@ -2,7 +2,7 @@ from monkey import *
 
 FILE_NAME = "monkeys.txt"
 NB_ROUNDS_PART1 = 20
-NB_ROUNDS_PART2 = 100
+NB_ROUNDS_PART2 = 10000
 
 def parse_file(file):
     monkeys = []
@@ -43,12 +43,6 @@ def calculate_monkey_business(monkeys):
     array_inspections.sort()
     return array_inspections[-1] * array_inspections[-2]
 
-def display_monkeys(monkeys):
-    for i in range(len(monkeys)):
-        print("Monkey: ", i)
-        print(monkeys[i].toString() + "\n")
-    return None
-
 # PART 1
 def get_monkey_business_part1(file, nb_rounds):
     round = 0
@@ -72,25 +66,37 @@ def monkey_in_the_middle_part1():
     return monkey_business
 
 # PART 2
-round = 0
+def calculate_supermodulo(monkeys):
+    supermodulo = 1
+    for monkey in monkeys:
+        supermodulo *= monkey.divide_test
+    return supermodulo
 
-file = open(FILE_NAME, "r")
-monkeys = parse_file(file)
-file.close()
+def get_monkey_business_part2(file, nb_rounds):
+    round = 0
+    file = open(FILE_NAME, "r")
+    monkeys = parse_file(file)
+    file.close()
 
-while round != NB_ROUNDS_PART2:
-    round += 1
-    print(round)
-    for i in range(len(monkeys)):
-        monkeys[i].inspect_items_part2()
-        for item in monkeys[i].items:
-            if monkeys[i].perform_division_test(item) == True:
-                monkeys[monkeys[i].divide_test_true_case].items.append(item)
-            else:
-                monkeys[monkeys[i].divide_test_false_case].items.append(item)
-        monkeys[i].items = []
+    supermodulo = calculate_supermodulo(monkeys)
 
-display_monkeys(monkeys)
+    while round != nb_rounds:
+        round += 1
+        for i in range(len(monkeys)):
+            monkeys[i].inspect_items_part2(supermodulo)
+            for item in monkeys[i].items:
+                if monkeys[i].perform_division_test(item) == True:
+                    monkeys[monkeys[i].divide_test_true_case].items.append(item)
+                else:
+                    monkeys[monkeys[i].divide_test_false_case].items.append(item)
+            monkeys[i].items = []
+    return calculate_monkey_business(monkeys)
+
+def monkey_in_the_middle_part2():
+    file = open(FILE_NAME, "r")
+    monkey_business = get_monkey_business_part2(file, NB_ROUNDS_PART2)
+    file.close()
+    return monkey_business
 
 ### TEST AREA
 # Part 1
@@ -99,4 +105,4 @@ display_monkeys(monkeys)
 
 # Part 2
 #print(monkey_in_the_middle_part2())
-# Output: 
+# Output: 30616425600
