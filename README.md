@@ -21,3 +21,5 @@
 * Day 10: https://adventofcode.com/2022/day/10 (2*)
 
 * Day 11: https://adventofcode.com/2022/day/11 (2*)
+
+* Day 13: https://adventofcode.com/2022/day/13 ()
